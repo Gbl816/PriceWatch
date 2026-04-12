@@ -1,0 +1,1 @@
+print("Iniciando projeto de monitoramento de preços")
