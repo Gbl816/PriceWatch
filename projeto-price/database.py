@@ -41,3 +41,15 @@ def cadastrar_produto(nome, url, site, preco_alvo):
 def listar_produtos():
     cursor.execute('SELECT * FROM produtos')
     return cursor.fetchall()
+
+def salvar_preco(produto_id, preco, data):
+    cursor.execute(
+        'INSERT INTO historico (produto_id, preco, data) VALUES (?, ?, ?)',
+        (produto_id, preco, data)
+    )
+    conn.commit()
+
+
+def listar_historico():
+    cursor.execute('SELECT * FROM historico')
+    return cursor.fetchall()
