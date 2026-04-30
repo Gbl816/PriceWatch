@@ -53,3 +53,10 @@ def salvar_preco(produto_id, preco, data):
 def listar_historico():
     cursor.execute('SELECT * FROM historico')
     return cursor.fetchall()
+
+def buscar_historico_produto(produto_id):
+    cursor.execute(
+        'SELECT preco, data FROM historico WHERE produto_id = ? ORDER BY data',
+        (produto_id,)
+    )
+    return cursor.fetchall()
