@@ -60,3 +60,21 @@ def buscar_historico_produto(produto_id):
         (produto_id,)
     )
     return cursor.fetchall()
+
+from datetime import datetime
+
+def salvar_preco(produto_id, preco):
+    data = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    
+    cursor.execute(
+        'INSERT INTO historico (produto_id, preco, data) VALUES (?, ?, ?)',
+        (produto_id, preco, data)
+    )
+    conn.commit()
+
+def listar_historico(produto_id):
+    cursor.execute(
+        'SELECT preco, data FROM historico WHERE produto_id = ?',
+        (produto_id,)
+    )
+    return cursor.fetchall()

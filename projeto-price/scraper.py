@@ -12,6 +12,8 @@ def pegar_preco(url):
     preco = soup.find('span', class_='price')
 
     if preco:
-        return preco.text.strip()
+        valor = preco.text.strip()
+        valor = valor.replace("R$", "").replace(".", "").replace(",", ".").strip()
+        return float(valor)
     
     return None
