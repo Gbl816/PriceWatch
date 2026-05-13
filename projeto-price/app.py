@@ -49,3 +49,7 @@ if __name__ == "__main__":
     mostrar_historico()
     analisar_precos()
 
+from alerts import verificar_alerta
+
+resultado = verificar_alerta(2500, 3000)
+print(resultado)
