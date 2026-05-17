@@ -53,3 +53,25 @@ from alerts import verificar_alerta
 
 resultado = verificar_alerta(2500, 3000)
 print(resultado)
+
+from database import listar_produtos
+from alerts import verificar_alerta
+
+def testar_alertas():
+    produtos = listar_produtos()
+
+    for p in produtos:
+        nome = p[1]
+        preco_alvo = p[4]
+
+        preco_atual = 2500
+
+        resultado = verificar_alerta(preco_atual, preco_alvo)
+
+        print(f"\nProduto: {nome}")
+        print(f"Preço atual: R$ {preco_atual}")
+        print(f"Preço alvo: R$ {preco_alvo}")
+        print(resultado)
+
+if __name__ == "__main__":
+    testar_alertas()
